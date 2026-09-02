@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love 💜✨ | A Special Greeting From Me To You</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- App Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Animated Particle Canvas -->
+  <canvas id="fx-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Ambient Glow Background Orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- =========================================================================
+       1. ENVELOPE GATE (MAGICAL INTRO FROM HIM TO HER)
+       ========================================================================= -->
+  <div id="envelope-gate">
+    <div class="envelope-wrapper" id="envelope-btn" title="Click to open your special birthday letter!">
+      <div class="envelope">
+        <div class="envelope-flap"></div>
+        <div class="letter-preview">
+          <div style="font-size: 1.8rem; margin-bottom: 4px;">💌</div>
+          <h3 id="gate-card-name">To My Birthday Girl</h3>
+          <p id="gate-from-tag">With all my love, from me to you</p>
+        </div>
+        <div class="envelope-pocket"></div>
+        <div class="wax-seal">
+          <span>💜</span>
+        </div>
+      </div>
+    </div>
+    <div class="gate-text">
+      <h2 class="gate-title">I Made Something Special For You</h2>
+      <p class="gate-sub">
+        <span class="sparkle-icon">✨</span> Tap the wax seal to unwrap your birthday surprise <span class="sparkle-icon">✨</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       TOP FLOATING NAV CONTROLS
+       ========================================================================= -->
+  <nav class="top-nav">
+    <button class="nav-btn" id="music-toggle-btn" title="Toggle relaxing ambient music">
+      <span id="music-icon">🎵</span>
+      <span id="music-text">Music</span>
+      <div class="music-wave paused" id="music-wave">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </button>
+    <button class="nav-btn" id="sfx-toggle-btn" title="Toggle sound effects">
+      <span id="sfx-icon">🔔</span>
+      <span>SFX: On</span>
+    </button>
+  </nav>
+
+  <!-- =========================================================================
+       2. HERO SECTION
+       ========================================================================= -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="badge-tag">
+        <span>🌸</span> A Birthday Greeting From My Heart To Yours <span>🌸</span>
+      </div>
+      
+      <h1 class="hero-title">
+        Happy Birthday,
+        <span class="hero-name" id="display-name">My Beautiful Girl</span>
+      </h1>
+      
+      <p class="hero-subtitle" id="display-subtitle">
+        Every day with you feels like a gift, but today is the most special because it's the day the world was blessed with you. Here is a little piece of my heart, made just for you on your birthday.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#cake-section" class="btn-primary">
+          <span>🎂 Blow Your Candles</span>
+        </a>
+        <a href="#letter-section" class="btn-secondary">
+          <span>💌 Read My Letter</span>
+        </a>
+        <a href="#memories-section" class="btn-secondary">
+          <span>📸 Our Memories</span>
+        </a>
+      </div>
+
+      <!-- Celebration & Relationship Ticker -->
+      <div class="counter-box">
+        <div class="counter-item">
+          <span class="counter-num" id="count-days">365+</span>
+          <span class="counter-label">Days Loving You</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="count-smiles">∞</span>
+          <span class="counter-label">Times You Made Me Smile</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="count-memories">100%</span>
+          <span class="counter-label">My Favorite Person</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="count-sparkles">💜</span>
+          <span class="counter-label">Forever & Always</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. INTERACTIVE BIRTHDAY CAKE & CANDLE SECTION
+       ========================================================================= -->
+  <section class="section-wrapper" id="cake-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">✦ A Sweet Wish For You ✦</span>
+        <h2 class="section-title">I Made A Cake For You!</h2>
+        <p class="section-desc">Close your eyes, make a wish with all your heart, and blow out each candle (tap them or hit the button below)!</p>
+      </div>
+
+      <div class="cake-container glass-card">
+        <div class="cake-stage">
+          
+          <!-- Flickering Candles -->
+          <div class="candles-group" id="candles-group">
+            <div class="candle" data-id="1">
+              <div class="candle-wick"></div>
+              <div class="candle-flame"></div>
+              <div class="candle-smoke"></div>
+            </div>
+            <div class="candle" data-id="2">
+              <div class="candle-wick"></div>
+              <div class="candle-flame"></div>
+              <div class="candle-smoke"></div>
+            </div>
+            <div class="candle" data-id="3">
+              <div class="candle-wick"></div>
+              <div class="candle-flame"></div>
+              <div class="candle-smoke"></div>
+            </div>
+          </div>
+
+          <!-- 3-Tier Lavender Cake -->
+          <div class="cake-tier top">
+            <div class="frosting-drip"></div>
+            <div class="cake-pearls">
+              <div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
+            </div>
+          </div>
+
+          <div class="cake-tier middle">
+            <div class="frosting-drip"></div>
+            <div class="cake-pearls">
+              <div class="pearl"></div><div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
+            </div>
+          </div>
+
+          <div class="cake-tier bottom">
+            <div class="frosting-drip"></div>
+            <div class="cake-pearls">
+              <div class="pearl"></div><div class="pearl"></div><div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
+            </div>
+          </div>
+
+          <!-- Plate -->
+          <div class="cake-plate"></div>
+        </div>
+
+        <div class="cake-controls">
+          <p class="cake-instruction" id="cake-status-text">
+            ✨ Tap each candle or the button to make your birthday wish!
+          </p>
+          <button class="btn-primary" id="blow-all-btn">
+            <span>💨 Blow Out All Candles</span>
+          </button>
+          <button class="btn-secondary" id="relight-btn" style="display: none; margin-left: 8px;">
+            <span>✨ Relight Candles</span>
+          </button>
+
+          <!-- Secret Birthday Wish Card -->
+          <div class="cake-wish-card" id="cake-wish-card">
+            <h4>✨ My Birthday Wish For You ✨</h4>
+            <p id="cake-wish-text">
+              "My wish for you is that this year brings you as much happiness, peace, and love as you bring into my life every single day. You deserve the entire universe, sweetheart."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. POLAROID MEMORY LANE (FROM MY PERSPECTIVE)
+       ========================================================================= -->
+  <section class="section-wrapper" id="memories-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">✦ Our Story Through My Eyes ✦</span>
+        <h2 class="section-title">My Favorite Memories With You</h2>
+        <p class="section-desc">Every single moment I've spent with you is etched in my heart.</p>
+      </div>
+
+      <div class="polaroid-grid" id="polaroid-grid">
+        <!-- Polaroid 1 -->
+        <div class="polaroid-card" data-index="0">
+          <div class="tape"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/photo1.jpg" onerror="this.onerror=null; this.src='images/photo1.svg';" alt="When I First Saw You" class="polaroid-img" id="polaroid-img-0">
+          </div>
+          <div class="polaroid-caption">
+            <h4 id="polaroid-title-0">When I First Saw You</h4>
+            <p id="polaroid-sub-0">I still remember how fast my heart beat when you first smiled at me.</p>
+          </div>
+        </div>
+
+        <!-- Polaroid 2 -->
+        <div class="polaroid-card" data-index="1">
+          <div class="tape"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/photo2.jpg" onerror="this.onerror=null; this.src='images/photo2.svg';" alt="Our Midnight Talks" class="polaroid-img" id="polaroid-img-1">
+          </div>
+          <div class="polaroid-caption">
+            <h4 id="polaroid-title-1">Our Midnight Talks</h4>
+            <p id="polaroid-sub-1">Hearing you laugh at 2 AM is my absolute favorite sound in the world.</p>
+          </div>
+        </div>
+
+        <!-- Polaroid 3 -->
+        <div class="polaroid-card" data-index="2">
+          <div class="tape"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/photo3.jpg" onerror="this.onerror=null; this.src='images/photo3.svg';" alt="Every Little Trip" class="polaroid-img" id="polaroid-img-2">
+          </div>
+          <div class="polaroid-caption">
+            <h4 id="polaroid-title-2">Every Little Trip</h4>
+            <p id="polaroid-sub-2">No matter where we go, as long as I'm with you, I'm already in paradise.</p>
+          </div>
+        </div>
+
+        <!-- Polaroid 4 -->
+        <div class="polaroid-card" data-index="3">
+          <div class="tape"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/photo4.jpg" onerror="this.onerror=null; this.src='images/photo4.svg';" alt="The Prettiest Girl" class="polaroid-img" id="polaroid-img-3">
+          </div>
+          <div class="polaroid-caption">
+            <h4 id="polaroid-title-3">The Most Beautiful Girl</h4>
+            <p id="polaroid-sub-3">Just a reminder from me: you take my breath away every single day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. WHY I FELL IN LOVE WITH YOU (3D FLIP CARDS)
+       ========================================================================= -->
+  <section class="section-wrapper" id="reasons-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">✦ What Makes You So Special To Me ✦</span>
+        <h2 class="section-title">Why I Fell In Love With You</h2>
+        <p class="section-desc">Tap each card to read what I love most about you, straight from my heart.</p>
+      </div>
+
+      <div class="reasons-grid">
+        <!-- Card 1 -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-icon">✨</div>
+              <h3>The Way You Smile At Me</h3>
+              <span class="tap-hint">Tap to see what I feel 💜</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Whenever you look at me and smile, everything stressful disappears. You have this magical power to make me feel so cherished.</p>
+              <div class="back-signature">My favorite view in the world</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-icon">🌸</div>
+              <h3>How You Care For Me</h3>
+              <span class="tap-hint">Tap to see what I feel 💜</span>
+            </div>
+            <div class="flip-card-back">
+              <p>The gentle way you check on me, hold my hand, and always care about the little things makes me realize how blessed I am to have you.</p>
+              <div class="back-signature">You have my whole heart</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-icon">💫</div>
+              <h3>How We Connect</h3>
+              <span class="tap-hint">Tap to see what I feel 💜</span>
+            </div>
+            <div class="flip-card-back">
+              <p>You understand my silences just as much as my words. I can be completely myself around you without ever being judged.</p>
+              <div class="back-signature">My best friend & soulmate</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-icon">💜</div>
+              <h3>Simply Loving You</h3>
+              <span class="tap-hint">Tap to see what I feel 💜</span>
+            </div>
+            <div class="flip-card-back">
+              <p>I don't just love you on your happiest days; I love you through every season, every mood, and every step of our journey together.</p>
+              <div class="back-signature">Yours, forever & always</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. THE PERSONAL LOVE LETTER (FROM ME TO HER)
+       ========================================================================= -->
+  <section class="section-wrapper letter-section" id="letter-section">
+    <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+      <div class="section-header">
+        <span class="section-tag">✦ From My Heart To Yours ✦</span>
+        <h2 class="section-title">A Letter From Me</h2>
+      </div>
+
+      <div class="parchment-scroll">
+        <div class="letter-heading">
+          <h3 id="letter-greeting">Dearest <span id="letter-recipient-name">Maya</span>,</h3>
+          <span class="letter-date" id="letter-date">Written with all my love on your birthday</span>
+        </div>
+
+        <div class="letter-body" id="letter-body-content">
+Happy Birthday to the most extraordinary woman in the world!
+
+Today is all about celebrating you — the girl who walked into my life and made everything brighter, softer, and so much sweeter. 
+
+Thank you for your warmth, your adorable laugh, your comforting hugs, and for being my absolute favorite person in the universe. You make ordinary days feel like a dream, and having you by my side is the greatest blessing I could ever ask for.
+
+On your special day, I want to promise you that I'll always be here to hold your hand, make you laugh when you're down, cheer you on in everything you do, and love you more and more with every single heartbeat.
+
+May this new year of your life bring you endless smiles, beautiful adventures, and all the dreams your heart desires.
+
+Happy Birthday, my sweet love!
+        </div>
+
+        <div class="letter-signoff">
+          <p>Forever yours with all my heart,</p>
+          <span class="signature" id="letter-signature">Your Boyfriend 💜</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. VIRTUAL LOVE ACTIONS (FROM ME TO HER)
+       ========================================================================= -->
+  <section class="section-wrapper" style="padding-top: 10px;">
+    <div class="container text-center" style="text-align: center;">
+      <span class="section-tag">✦ Sending You Love Right Now ✦</span>
+      <h2 class="section-title">Little Surprises From Me</h2>
+      
+      <div class="love-actions-grid">
+        <button class="love-btn" id="send-hug-btn">
+          <span>🤗</span>
+          <span>Send My Warm Hug</span>
+        </button>
+        <button class="love-btn" id="send-kiss-btn">
+          <span>💋</span>
+          <span>Send A Sweet Kiss</span>
+        </button>
+        <button class="love-btn" id="send-sparkles-btn">
+          <span>🌸</span>
+          <span>Shower You With Flowers</span>
+        </button>
+        <button class="love-btn" id="send-hearts-btn">
+          <span>💜</span>
+          <span>All My Heart For You</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Made with <span class="beating-heart">💜</span> by your boyfriend, just for you on your birthday.
+      </p>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="script.js"></script>
+</body>
+</html>
